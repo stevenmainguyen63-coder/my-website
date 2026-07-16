@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>New Horizon of Human Spirits — Steven Mai Nguyen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#3E3550;
+    --night:#4A3F5F;
+    --night-2:#564A6E;
+    --gold:#E08D4F;
+    --gold-soft:#F4B75E;
+    --cream:#F5F1EA;
+    --lavender:#D6D6E6;
+    --line: rgba(255,255,255,0.16);
+    --radius: 2px;
+    --dawn-1:#385D7C;
+    --dawn-2:#457B8B;
+    --dawn-3:#559590;
+    --dawn-4:#6BAD8B;
+    --dawn-5:#A0CBA9;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--ink);
+    color:var(--cream);
+    font-family:'Inter', sans-serif;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.display{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:500;
+    letter-spacing:0.01em;
+  }
+  a{color:inherit;}
+  .eyebrow{
+    font-size:0.8rem;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    color:var(--gold-soft);
+    font-weight:600;
+  }
+  .wrap{max-width:1080px; margin:0 auto; padding:0 28px;}
+  .section{padding:130px 0;}
+  .section-tight{padding:85px 0;}
+
+  /* NAV */
+  nav{
+    position:fixed; top:0; left:0; right:0; z-index:50;
+    background:linear-gradient(to bottom, rgba(15,18,32,0.92), transparent);
+    padding:22px 0;
+  }
+  nav .wrap{display:flex; justify-content:space-between; align-items:center;}
+  .brand{font-family:'Cormorant Garamond', serif; font-size:1.35rem; letter-spacing:0.04em; color:var(--cream);}
+  .brand em{color:var(--gold-soft); font-style:normal;}
+  .navlinks{display:flex; gap:34px; font-size:0.92rem; letter-spacing:0.05em;}
+  .navlinks a{opacity:0.75; text-decoration:none; transition:opacity 0.2s;}
+  .navlinks a:hover{opacity:1;}
+
+  /* HERO */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex; align-items:center;
+    background:
+      radial-gradient(ellipse 1100px 650px at 50% 100%, var(--dawn-5) 0%, var(--dawn-4) 28%, var(--dawn-3) 52%, var(--dawn-2) 75%, var(--dawn-1) 100%);
+    overflow-x:hidden;
+  }
+  #stars{position:absolute; inset:0; z-index:0;}
+  .hero .wrap{position:relative; z-index:2; padding-top:60px;}
+  .hero-inner{max-width:700px;}
+  .hero .eyebrow{margin-bottom:22px; display:block;}
+  .hero h1{
+    font-size:clamp(2.8rem, 6vw, 4.8rem);
+    line-height:1.08;
+    color:var(--cream);
+    margin-bottom:26px;
+  }
+  .hero h1 .accent{color:var(--gold-soft); font-style:italic;}
+  .hero p.lede{
+    font-size:1.28rem;
+    color:var(--lavender);
+    max-width:600px;
+    margin-bottom:40px;
+  }
+  .cta-row{display:flex; gap:18px; flex-wrap:wrap;}
+  .btn{
+    display:inline-block;
+    padding:18px 36px;
+    font-size:0.92rem;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    text-decoration:none;
+    border-radius:var(--radius);
+    transition:all 0.25s ease;
+    font-weight:600;
+  }
+  .btn-gold{background:var(--gold); color:var(--ink);}
+  .btn-gold:hover{background:var(--gold-soft); transform:translateY(-1px);}
+  .btn-ghost{border:1px solid var(--line); color:var(--cream);}
+  .btn-ghost:hover{border-color:var(--gold-soft); color:var(--gold-soft);}
+
+  .north-star{
+    position:absolute; width:5px; height:5px; border-radius:50%;
+    background:var(--gold-soft);
+    box-shadow:0 0 12px 3px rgba(228,200,120,0.7);
+    animation:pulse 3.2s ease-in-out infinite;
+  }
+  @keyframes pulse{
+    0%,100%{opacity:0.55; transform:scale(1);}
+    50%{opacity:1; transform:scale(1.6);}
+  }
+  @keyframes twinkle{
+    0%,100%{opacity:0.3; transform:scale(0.85);}
+    50%{opacity:1; transform:scale(1.15);}
+  }
+  .hero-emblem .twinkle{
+    animation:twinkle 2.6s ease-in-out infinite;
+    transform-origin:center;
+    transform-box:fill-box;
+  }
+  .ambient-sparkle{
+    position:absolute;
+    animation:twinkle 3s ease-in-out infinite;
+  }
+  @keyframes flashcore{
+    0%,100%{opacity:0.75; transform:scale(1);}
+    50%{opacity:1; transform:scale(1.5);}
+  }
+  .flash-core{
+    animation:flashcore 1.8s ease-in-out infinite;
+    transform-origin:center;
+    transform-box:fill-box;
+    filter:drop-shadow(0 0 14px rgba(255,255,255,0.9));
+  }
+  .hero-emblem{
+    position:absolute;
+    top:30px;
+    right:4%;
+    width:22%;
+    max-width:290px;
+    z-index:1;
+    opacity:1;
+    filter:drop-shadow(0 0 75px rgba(255,222,140,0.55));
+    animation:emberglow 5s ease-in-out infinite;
+    pointer-events:none;
+  }
+  @keyframes emberglow{
+    0%,100%{opacity:0.9; filter:drop-shadow(0 0 65px rgba(255,222,140,0.45));}
+    50%{opacity:1; filter:drop-shadow(0 0 100px rgba(255,230,160,0.68));}
+  }
+  @media(max-width:860px){
+    .hero-emblem{width:80%; right:-15%; top:2%; opacity:0.55;}
+  }
+
+  /* STORY */
+  .story{background:var(--night); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .story-grid{display:grid; grid-template-columns:0.9fr 1.5fr; gap:70px;}
+  .story-label{position:sticky; top:120px; align-self:start;}
+  .story-label h2{font-size:2.6rem; color:var(--cream); margin-bottom:14px;}
+  .story-label p{color:var(--lavender); font-size:1.05rem;}
+  .story-body p{
+    color:#F0EFEA;
+    font-size:1.15rem;
+    margin-bottom:22px;
+  }
+  .story-body p.quote{
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-size:1.6rem;
+    color:var(--gold-soft);
+    border-left:2px solid var(--gold);
+    padding-left:24px;
+    margin:34px 0;
+    line-height:1.5;
+  }
+  .story-body .fold{
+    max-height:210px;
+    overflow:hidden;
+    position:relative;
+    transition:max-height 0.5s ease;
+  }
+  .story-body .fold.open{max-height:2400px;}
+  .fold-fade{
+    position:absolute; bottom:0; left:0; right:0; height:90px;
+    background:linear-gradient(to bottom, transparent, var(--night));
+    pointer-events:none;
+    transition:opacity 0.3s;
+  }
+  .fold.open + .fold-fade{opacity:0;}
+  .readmore{
+    margin-top:18px;
+    background:none; border:none; cursor:pointer;
+    color:var(--gold-soft); font-size:0.85rem; letter-spacing:0.05em;
+    text-transform:uppercase; font-weight:600;
+    padding:0;
+  }
+
+  /* VIDEOS */
+  .videos{background:var(--ink);}
+  .section-head{max-width:600px; margin-bottom:56px;}
+  .section-head h2{font-size:2.6rem; margin:12px 0 16px;}
+  .section-head p{color:var(--lavender); font-size:1.08rem;}
+  .video-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px;}
+  .video-card{
+    background:var(--night-2);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    overflow:hidden;
+    position:relative;
+  }
+  .video-thumb{
+    aspect-ratio:16/10;
+    background:linear-gradient(135deg, #232948, #171B30);
+    display:flex; align-items:center; justify-content:center;
+    position:relative;
+  }
+  .lock-icon{
+    width:38px; height:38px;
+    border:1.5px solid var(--gold-soft);
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    color:var(--gold-soft);
+    font-size:1rem;
+  }
+  .video-meta{padding:18px 20px;}
+  .video-meta h4{font-family:'Cormorant Garamond',serif; font-size:1.3rem; margin-bottom:6px; color:var(--cream); font-weight:600;}
+  .video-meta span{font-size:0.78rem; color:var(--lavender); text-transform:uppercase; letter-spacing:0.05em;}
+  .member-banner{
+    margin-top:44px;
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:32px 36px;
+    display:flex; justify-content:space-between; align-items:center; gap:24px; flex-wrap:wrap;
+    background:linear-gradient(120deg, rgba(201,162,75,0.06), transparent);
+  }
+  .member-banner p{color:var(--lavender); font-size:0.95rem; max-width:440px;}
+  .member-banner strong{color:var(--cream);}
+
+  /* OPPORTUNITY */
+  .opportunity{background:var(--night); border-top:1px solid var(--line);}
+  .opp-grid{display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:start;}
+  .opp-text h2{font-size:2.6rem; margin:12px 0 20px;}
+  .opp-text p{color:#F0EFEA; margin-bottom:18px; font-size:1.1rem;}
+  .opp-list{list-style:none; margin-top:28px;}
+  .opp-list li{
+    display:flex; gap:14px; padding:14px 0;
+    border-top:1px solid var(--line);
+    font-size:0.95rem; color:#F0EFEA;
+  }
+  .opp-list li:last-child{border-bottom:1px solid var(--line);}
+  .opp-list .mark{color:var(--gold-soft); font-family:'Cormorant Garamond',serif; font-size:1.1rem; flex-shrink:0;}
+  .tier-card{
+    background:var(--night-2);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:36px;
+  }
+  .tier-card h3{font-size:1.6rem; color:var(--gold-soft); margin-bottom:6px;}
+  .tier-card > p{color:var(--lavender); font-size:0.88rem; margin-bottom:26px;}
+  .tier-row{
+    display:flex; justify-content:space-between; align-items:baseline;
+    padding:13px 0; border-top:1px solid var(--line);
+    font-size:0.92rem;
+  }
+  .tier-row:last-of-type{border-bottom:1px solid var(--line); margin-bottom:22px;}
+  .tier-row .t-name{color:var(--cream); font-weight:500;}
+  .tier-row .t-comm{color:var(--gold-soft); font-family:'Cormorant Garamond', serif; font-size:1.05rem;}
+  .tier-note{font-size:0.8rem; color:var(--lavender); line-height:1.6;}
+
+  /* JOIN / CONTACT */
+  .join{background:var(--ink);}
+  .join-grid{display:grid; grid-template-columns:1fr 1fr; gap:60px;}
+  .join-text h2{font-size:2.6rem; margin:12px 0 20px;}
+  .join-text p{color:var(--lavender); margin-bottom:14px;}
+  form{display:flex; flex-direction:column; gap:16px;}
+  label{font-size:0.78rem; letter-spacing:0.05em; text-transform:uppercase; color:var(--lavender); margin-bottom:6px; display:block;}
+  input, textarea, select{
+    width:100%;
+    background:var(--night-2);
+    border:1px solid var(--line);
+    color:var(--cream);
+    padding:13px 15px;
+    font-family:'Inter',sans-serif;
+    font-size:0.95rem;
+    border-radius:var(--radius);
+    outline:none;
+    transition:border-color 0.2s;
+  }
+  input:focus, textarea:focus, select:focus{border-color:var(--gold-soft);}
+  textarea{resize:vertical; min-height:100px;}
+  .form-submit{margin-top:6px; align-self:flex-start;}
+
+  footer{
+    padding:40px 0;
+    border-top:1px solid var(--line);
+    text-align:center;
+    color:var(--lavender);
+    font-size:0.82rem;
+  }
+
+  @media(max-width:860px){
+    .story-grid, .opp-grid, .join-grid{grid-template-columns:1fr; gap:36px;}
+    .story-label{position:static;}
+    .video-grid{grid-template-columns:1fr 1fr;}
+    .navlinks{display:none;}
+  }
+  @media(max-width:560px){
+    .video-grid{grid-template-columns:1fr;}
+    .section{padding:70px 0;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important; transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand" style="display:flex; align-items:center; gap:12px;">
+      <svg viewBox="0 0 400 400" style="height:34px; width:auto; flex-shrink:0;" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="New Horizon of Human Spirits emblem">
+  <defs>
+    <linearGradient id="raygradNav2" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#E8D9A8"/>
+      <stop offset="50%" stop-color="#FFF3D6"/>
+      <stop offset="100%" stop-color="#FFFFFF"/>
+    </linearGradient>
+    <radialGradient id="coregradNav2" cx="50%" cy="50%" r="55%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="55%" stop-color="#F3FFF6"/>
+      <stop offset="100%" stop-color="#CFEFDA"/>
+    </radialGradient>
+  </defs>
+
+  <path d="M85 112 Q85.96 119.04 93 120 Q85.96 120.96 85 128 Q84.04 120.96 77 120 Q84.04 119.04 85 112 Z" fill="url(#raygradNav2)" opacity="0.5"/>
+    <path d="M60 194 Q60.72 199.28 66 200 Q60.72 200.72 60 206 Q59.28 200.72 54 200 Q59.28 199.28 60 194 Z" fill="url(#raygradNav2)" opacity="0.4"/>
+    <path d="M95 278 Q95.84 284.16 102 285 Q95.84 285.84 95 292 Q94.16 285.84 88 285 Q94.16 284.16 95 278 Z" fill="url(#raygradNav2)" opacity="0.45"/>
+    <path d="M315 112 Q315.96 119.04 323 120 Q315.96 120.96 315 128 Q314.04 120.96 307 120 Q314.04 119.04 315 112 Z" fill="url(#raygradNav2)" opacity="0.5"/>
+    <path d="M340 194 Q340.72 199.28 346 200 Q340.72 200.72 340 206 Q339.28 200.72 334 200 Q339.28 199.28 340 194 Z" fill="url(#raygradNav2)" opacity="0.4"/>
+    <path d="M305 278 Q305.84 284.16 312 285 Q305.84 285.84 305 292 Q304.16 285.84 298 285 Q304.16 284.16 305 278 Z" fill="url(#raygradNav2)" opacity="0.45"/>
+
+  <path d="M199.5,186.0 L200.0,32.0 L200.5,186.0 Z" fill="url(#raygradNav2)" opacity="1.0"/>
+    <path d="M206.5,187.6 L254.0,106.5 L207.5,188.2 Z" fill="url(#raygradNav2)" opacity="0.75"/>
+    <path d="M211.8,192.5 L293.5,146.0 L212.4,193.5 Z" fill="url(#raygradNav2)" opacity="0.75"/>
+    <path d="M214.0,199.5 L368.0,200.0 L214.0,200.5 Z" fill="url(#raygradNav2)" opacity="1.0"/>
+    <path d="M212.4,206.5 L293.5,254.0 L211.8,207.5 Z" fill="url(#raygradNav2)" opacity="0.75"/>
+    <path d="M207.5,211.8 L254.0,293.5 L206.5,212.4 Z" fill="url(#raygradNav2)" opacity="0.75"/>
+    <path d="M200.5,214.0 L200.0,368.0 L199.5,214.0 Z" fill="url(#raygradNav2)" opacity="1.0"/>
+    <path d="M193.5,212.4 L146.0,293.5 L192.5,211.8 Z" fill="url(#raygradNav2)" opacity="0.75"/>
+    <path d="M188.2,207.5 L106.5,254.0 L187.6,206.5 Z" fill="url(#raygradNav2)" opacity="0.75"/>
+    <path d="M186.0,200.5 L32.0,200.0 L186.0,199.5 Z" fill="url(#raygradNav2)" opacity="1.0"/>
+    <path d="M187.6,193.5 L106.5,146.0 L188.2,192.5 Z" fill="url(#raygradNav2)" opacity="0.75"/>
+    <path d="M192.5,188.2 L146.0,106.5 L193.5,187.6 Z" fill="url(#raygradNav2)" opacity="0.75"/>
+
+  <circle cx="200" cy="200" r="8" fill="url(#coregradNav2)"/>
+
+</svg>
+      New Horizon <em>of Human Spirits</em>
+    </div>
+    <div class="navlinks">
+      <a href="#story">My Story</a>
+      <a href="#videos">Videos</a>
+      <a href="#opportunity">The Opportunity</a>
+      <a href="#join">Join</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <canvas id="stars"></canvas>
+  <div class="ambient-sparkle" style="left:12%; top:22%; animation-delay:0.2s;">
+    <svg width="14" height="14" viewBox="0 0 20 20"><path d="M10 0 Q11 9 20 10 Q11 11 10 20 Q9 11 0 10 Q9 9 10 0 Z" fill="#FFFFFF"/></svg>
+  </div>
+  <div class="ambient-sparkle" style="left:22%; top:60%; animation-delay:1.1s;">
+    <svg width="10" height="10" viewBox="0 0 20 20"><path d="M10 0 Q11 9 20 10 Q11 11 10 20 Q9 11 0 10 Q9 9 10 0 Z" fill="#FFFFFF"/></svg>
+  </div>
+  <div class="ambient-sparkle" style="left:6%; top:75%; animation-delay:1.8s;">
+    <svg width="12" height="12" viewBox="0 0 20 20"><path d="M10 0 Q11 9 20 10 Q11 11 10 20 Q9 11 0 10 Q9 9 10 0 Z" fill="#FFFFFF"/></svg>
+  </div>
+  <div class="ambient-sparkle" style="left:45%; top:15%; animation-delay:0.6s;">
+    <svg width="9" height="9" viewBox="0 0 20 20"><path d="M10 0 Q11 9 20 10 Q11 11 10 20 Q9 11 0 10 Q9 9 10 0 Z" fill="#FFFFFF"/></svg>
+  </div>
+  <div class="ambient-sparkle" style="left:65%; top:35%; animation-delay:1.4s;">
+    <svg width="10" height="10" viewBox="0 0 20 20"><path d="M10 0 Q11 9 20 10 Q11 11 10 20 Q9 11 0 10 Q9 9 10 0 Z" fill="#FFFFFF"/></svg>
+  </div>
+  <div class="ambient-sparkle" style="left:35%; top:70%; animation-delay:0.9s;">
+    <svg width="8" height="8" viewBox="0 0 20 20"><path d="M10 0 Q11 9 20 10 Q11 11 10 20 Q9 11 0 10 Q9 9 10 0 Z" fill="#FFFFFF"/></svg>
+  </div>
+  <div class="ambient-sparkle" style="left:78%; top:60%; animation-delay:2.2s;">
+    <svg width="11" height="11" viewBox="0 0 20 20"><path d="M10 0 Q11 9 20 10 Q11 11 10 20 Q9 11 0 10 Q9 9 10 0 Z" fill="#FFFFFF"/></svg>
+  </div>
+  <div class="ambient-sparkle" style="left:88%; top:20%; animation-delay:0.3s;">
+    <svg width="9" height="9" viewBox="0 0 20 20"><path d="M10 0 Q11 9 20 10 Q11 11 10 20 Q9 11 0 10 Q9 9 10 0 Z" fill="#FFFFFF"/></svg>
+  </div>
+
+  <svg class="hero-emblem" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="">
+  <defs>
+    <linearGradient id="raygradHero2" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#E8D9A8"/>
+      <stop offset="50%" stop-color="#FFF3D6"/>
+      <stop offset="100%" stop-color="#FFFFFF"/>
+    </linearGradient>
+    <radialGradient id="coregradHero2" cx="50%" cy="50%" r="55%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="55%" stop-color="#F3FFF6"/>
+      <stop offset="100%" stop-color="#CFEFDA"/>
+    </radialGradient>
+  </defs>
+
+  <path d="M85 112 Q85.96 119.04 93 120 Q85.96 120.96 85 128 Q84.04 120.96 77 120 Q84.04 119.04 85 112 Z" class="twinkle" style="animation-delay:0s;" fill="url(#raygradHero2)" opacity="0.5"/>
+    <path d="M60 194 Q60.72 199.28 66 200 Q60.72 200.72 60 206 Q59.28 200.72 54 200 Q59.28 199.28 60 194 Z" class="twinkle" style="animation-delay:0.4s;" fill="url(#raygradHero2)" opacity="0.4"/>
+    <path d="M95 278 Q95.84 284.16 102 285 Q95.84 285.84 95 292 Q94.16 285.84 88 285 Q94.16 284.16 95 278 Z" class="twinkle" style="animation-delay:0.8s;" fill="url(#raygradHero2)" opacity="0.45"/>
+    <path d="M315 112 Q315.96 119.04 323 120 Q315.96 120.96 315 128 Q314.04 120.96 307 120 Q314.04 119.04 315 112 Z" class="twinkle" style="animation-delay:1.2s;" fill="url(#raygradHero2)" opacity="0.5"/>
+    <path d="M340 194 Q340.72 199.28 346 200 Q340.72 200.72 340 206 Q339.28 200.72 334 200 Q339.28 199.28 340 194 Z" class="twinkle" style="animation-delay:1.6s;" fill="url(#raygradHero2)" opacity="0.4"/>
+    <path d="M305 278 Q305.84 284.16 312 285 Q305.84 285.84 305 292 Q304.16 285.84 298 285 Q304.16 284.16 305 278 Z" class="twinkle" style="animation-delay:2.0s;" fill="url(#raygradHero2)" opacity="0.45"/>
+
+  <path d="M199.5,186.0 L200.0,32.0 L200.5,186.0 Z" fill="url(#raygradHero2)" opacity="1.0"/>
+    <path d="M206.5,187.6 L254.0,106.5 L207.5,188.2 Z" fill="url(#raygradHero2)" opacity="0.75"/>
+    <path d="M211.8,192.5 L293.5,146.0 L212.4,193.5 Z" fill="url(#raygradHero2)" opacity="0.75"/>
+    <path d="M214.0,199.5 L368.0,200.0 L214.0,200.5 Z" fill="url(#raygradHero2)" opacity="1.0"/>
+    <path d="M212.4,206.5 L293.5,254.0 L211.8,207.5 Z" fill="url(#raygradHero2)" opacity="0.75"/>
+    <path d="M207.5,211.8 L254.0,293.5 L206.5,212.4 Z" fill="url(#raygradHero2)" opacity="0.75"/>
+    <path d="M200.5,214.0 L200.0,368.0 L199.5,214.0 Z" fill="url(#raygradHero2)" opacity="1.0"/>
+    <path d="M193.5,212.4 L146.0,293.5 L192.5,211.8 Z" fill="url(#raygradHero2)" opacity="0.75"/>
+    <path d="M188.2,207.5 L106.5,254.0 L187.6,206.5 Z" fill="url(#raygradHero2)" opacity="0.75"/>
+    <path d="M186.0,200.5 L32.0,200.0 L186.0,199.5 Z" fill="url(#raygradHero2)" opacity="1.0"/>
+    <path d="M187.6,193.5 L106.5,146.0 L188.2,192.5 Z" fill="url(#raygradHero2)" opacity="0.75"/>
+    <path d="M192.5,188.2 L146.0,106.5 L193.5,187.6 Z" fill="url(#raygradHero2)" opacity="0.75"/>
+
+  <circle cx="200" cy="200" r="8" class="flash-core" fill="url(#coregradHero2)"/>
+
+</svg>
+  <div class="wrap">
+    <div class="hero-inner">
+      <span class="eyebrow">Steven Mai Nguyen · Lai Mai</span>
+      <h1>Twenty-seven years ago, <span class="accent">the unseen world</span> found me again.</h1>
+      <p class="lede">I am Steven Mai Nguyen — a father, a survivor, and still a student of life. What I have learned along the way, I now share with anyone willing to walk part of the path with me.</p>
+      <div class="cta-row">
+        <a href="#story" class="btn btn-gold">Read My Story</a>
+        <a href="#videos" class="btn btn-ghost">Watch the Videos</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="story section" id="story">
+  <div class="wrap story-grid">
+    <div class="story-label">
+      <span class="eyebrow">The Journey</span>
+      <h2>A life relearned</h2>
+      <p>From war and displacement, to fatherhood, to a moment that changed how I understood everything.</p>
+    </div>
+    <div>
+      <div class="story-body">
+        <div class="fold" id="storyFold">
+          <p>I was born as Steven Mai Nguyen, also known as Lai Mai — a child of two cultures, half Chinese, half Vietnamese — raised during a time when the world around me was filled with fear and uncertainty. My earliest memories were not of toys or playgrounds, but of air-raid sirens and families running for safety.</p>
+          <p>As a child I was fascinated by stories of the unseen world. An elderly neighbour told ghost stories at night, and although they frightened me, they also awakened a deep curiosity: where do we come from, and where do we go? But life pushed those questions aside. I told myself life was only one — you are born once, you live once, you die once.</p>
+          <p>Destiny had other plans. My family fled across Southeast Asia searching for a place to survive. Ten years passed before we reached stable ground — by then, my childhood was gone. I became a young man, a husband, and a father of three, working tirelessly to give my children the life I never had, while supporting my aging parents.</p>
+          <p class="quote">"We are sorry for your hardships, but we have never harmed your children. Life is a learning journey. Without challenges, how would you grow?"</p>
+          <p>Twenty-seven years ago, something happened that reconnected me with the spiritual world I had abandoned as a child. I cried — not from fear, but from the weight of everything I had lived through. In that moment I asked why life had to be so hard, and the answer I felt was gentle, not angry. I woke up. I understood. From that day, I began learning again — not from books, but from life, experience, and the quiet voice inside me.</p>
+          <p>Today I stand here not because my journey is finished, but because I am completing my final lessons. I am still a student of life, and every person I meet becomes either my teacher or my classmate. I created New Horizon of Human Spirits because I believe we can build something better — not just for ourselves, but for the generations after us.</p>
+        </div>
+        <div class="fold-fade"></div>
+      </div>
+      <button class="readmore" id="readmoreBtn">Continue Reading ↓</button>
+    </div>
+  </div>
+</section>
+
+<section class="videos section" id="videos">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Watch &amp; Learn</span>
+      <h2>Recordings from the other side</h2>
+      <p>Live and recorded sessions where I share what I've witnessed and learned. Full episodes are reserved for members.</p>
+    </div>
+    <div class="video-grid">
+      <div class="video-card">
+        <div class="video-thumb"><div class="lock-icon">&#128274;</div></div>
+        <div class="video-meta"><h4>The First Encounter</h4><span>Members Only · 24 min</span></div>
+      </div>
+      <div class="video-card">
+        <div class="video-thumb"><div class="lock-icon">&#128274;</div></div>
+        <div class="video-meta"><h4>Voices in the Quiet</h4><span>Members Only · 18 min</span></div>
+      </div>
+      <div class="video-card">
+        <div class="video-thumb"><div class="lock-icon">&#128274;</div></div>
+        <div class="video-meta"><h4>Lessons From the Unseen</h4><span>Members Only · 31 min</span></div>
+      </div>
+    </div>
+    <div class="member-banner">
+      <p><strong>Membership unlocks the full library.</strong> New sessions are added regularly, recorded exactly as they happen.</p>
+      <a href="#join" class="btn btn-gold">Become a Member</a>
+    </div>
+  </div>
+</section>
+
+<section class="opportunity section" id="opportunity">
+  <div class="wrap opp-grid">
+    <div class="opp-text">
+      <span class="eyebrow">Beyond the Videos</span>
+      <h2>The AI Marketing Bundle opportunity</h2>
+      <p>Alongside my story, I run a separate, straightforward business: AI-powered marketing tools that real businesses use to grow. You're welcome to simply buy and use the bundle — or, if you'd like, become a seller and earn from genuine sales you make.</p>
+      <p>This was built so people earn what they deserve — not so a few at the top profit from everyone else. Commission flows seven levels deep, so building and supporting a real team is rewarded, not just your own sales.</p>
+      <ul class="opp-list">
+        <li><span class="mark">—</span> No monthly quota to stay eligible. Sell when you sell, earn when you sell.</li>
+        <li><span class="mark">—</span> Commission is paid on real sales to real customers, at every level, never on recruitment alone.</li>
+        <li><span class="mark">—</span> No ceiling on what you or your team can earn.</li>
+        <li><span class="mark">—</span> Free to join as a seller — no ongoing membership fee required.</li>
+        <li><span class="mark">—</span> A share of company revenue supports the Sellers in Need Fund, for anyone on the team facing genuine hardship.</li>
+      </ul>
+    </div>
+    <div class="tier-card">
+      <h3>Seller Tiers</h3>
+      <p>Reached through verified sales — never purchased.</p>
+      <div class="tier-row"><span class="t-name">Associate</span><span class="t-comm">15%</span></div>
+      <div class="tier-row"><span class="t-name">Silver</span><span class="t-comm">18%</span></div>
+      <div class="tier-row"><span class="t-name">Gold</span><span class="t-comm">21%</span></div>
+      <div class="tier-row"><span class="t-name">Platinum</span><span class="t-comm">24%</span></div>
+      <div class="tier-row"><span class="t-name">Diamond</span><span class="t-comm">27%</span></div>
+      <div class="tier-row"><span class="t-name">Blue Diamond</span><span class="t-comm">30%</span></div>
+      <div class="tier-row"><span class="t-name">Exec. Ambassador</span><span class="t-comm">35%</span></div>
+      <p class="tier-note">Tiers reflect commission on your own verified customer sales. Overrides on your team's real sales apply up to 7 levels deep — always tied to genuine sales, never to membership or recruitment fees.</p>
+    </div>
+  </div>
+</section>
+
+<section class="join section" id="join">
+  <div class="wrap join-grid">
+    <div class="join-text">
+      <span class="eyebrow">Walk the Path</span>
+      <h2>Get in touch</h2>
+      <p>Whether you'd like to become a member, ask about the AI Marketing Bundle, or simply share where you are in your own journey — I'd like to hear from you.</p>
+      <p>All inquiries are read personally.</p>
+    </div>
+    <form onsubmit="event.preventDefault(); alert('Thank you — this form is a preview. Connect it to your email or a form service to start receiving messages.');">
+      <div>
+        <label for="name">Name</label>
+        <input type="text" id="name" required>
+      </div>
+      <div>
+        <label for="email">Email</label>
+        <input type="email" id="email" required>
+      </div>
+      <div>
+        <label for="interest">I'm interested in</label>
+        <select id="interest">
+          <option>Video Membership</option>
+          <option>AI Marketing Bundle — as a customer</option>
+          <option>AI Marketing Bundle — becoming a seller</option>
+          <option>Just saying hello</option>
+        </select>
+      </div>
+      <div>
+        <label for="message">Message</label>
+        <textarea id="message"></textarea>
+      </div>
+      <button type="submit" class="btn btn-gold form-submit">Send Message</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    © 2026 New Horizon of Human Spirits — Steven Mai Nguyen. All rights reserved.
+  </div>
+</footer>
+
+<script>
+  // Sunrise rays canvas
+  const canvas = document.getElementById('stars');
+  const ctx = canvas.getContext('2d');
+  let w, h, t = 0;
+  const rayCount = 14;
+  function resize(){
+    w = canvas.width = canvas.offsetWidth;
+    h = canvas.height = window.innerHeight;
+  }
+  function draw(){
+    ctx.clearRect(0,0,w,h);
+    const cx = w*0.5, cy = h*1.25;
+    for(let i=0;i<rayCount;i++){
+      const baseAngle = (Math.PI / (rayCount-1)) * i;
+      const wobble = Math.sin(t*0.0006 + i) * 0.02;
+      const angle = Math.PI + baseAngle + wobble;
+      const len = h*0.95;
+      const x2 = cx + Math.cos(angle)*len;
+      const y2 = cy + Math.sin(angle)*len;
+      const grad = ctx.createLinearGradient(cx, cy, x2, y2);
+      grad.addColorStop(0, 'rgba(255,224,140,0.2)');
+      grad.addColorStop(1, 'rgba(255,224,140,0)');
+      ctx.strokeStyle = grad;
+      ctx.lineWidth = 34;
+      ctx.beginPath();
+      ctx.moveTo(cx, cy);
+      ctx.lineTo(x2, y2);
+      ctx.stroke();
+    }
+    t++;
+    requestAnimationFrame(draw);
+  }
+  resize();
+  window.addEventListener('resize', resize);
+  if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    draw();
+  } else {
+    draw();
+  }
+
+  // Read more toggle
+  document.getElementById('readmoreBtn').addEventListener('click', function(){
+    const fold = document.getElementById('storyFold');
+    fold.classList.toggle('open');
+    this.textContent = fold.classList.contains('open') ? 'Show Less ↑' : 'Continue Reading ↓';
+  });
+</script>
+
+</body>
+</html>
